@@ -1,0 +1,37 @@
+{% ckan_extends %}
+
+{% block package_basic_fields_custom %}
+  <div class="form-group">
+    <label class="control-label" for="field-region">{{ _("地區") }}</label>
+    <div class="controls">
+      <select multiple id="field-region" name="region" data-module="autocomplete">
+        {% for region in h.regions()  %}
+          <option value="{{ region }}" {% if region in data.get('region', []) %}selected="selected"{% endif %}>{{ region }}</option>
+        {% endfor %}
+      </select>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="control-label" for="field-datasource">{{ _("資料來源") }}</label>
+    <div class="controls">
+      <select multiple id="field-datasource" name="datasource" data-module="autocomplete">
+        {% for datasource in h.datasources()  %}
+          <option value="{{ datasource }}" {% if datasource in data.get('datasource', []) %}selected="selected"{% endif %}>{{ datasource }}</option>
+        {% endfor %}
+      </select>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="control-label" for="field-updatefreq">{{ _("頻率") }}</label>
+    <div class="controls">
+      <select multiple id="field-updatefreq" name="updatefreq" data-module="autocomplete">
+        {% for updatefreq in h.updatefreqs()  %}
+          <option value="{{ updatefreq }}" {% if updatefreq in data.get('updatefreq', []) %}selected="selected"{% endif %}>{{ updatefreq }}</option>
+        {% endfor %}
+      </select>
+    </div>
+  </div>
+
+{% endblock %}

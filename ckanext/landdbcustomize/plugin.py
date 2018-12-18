@@ -62,7 +62,7 @@ def datasources():
     return get_vocab(vocabName)
 
 def updatefreqs():
-    vocabName = 'datasources'
+    vocabName = 'updatefreqs'
     tags = [
         u'5年',
         u'每年', 
@@ -84,6 +84,13 @@ class LanddbcustomizePlugin(plugins.SingletonPlugin,toolkit.DefaultDatasetForm):
     plugins.implements(plugins.IDatasetForm)
     plugins.implements(plugins.ITemplateHelpers)
     plugins.implements(plugins.IFacets)
+
+    # IConfigurer
+
+    def update_config(self, config_):
+        toolkit.add_template_directory(config_, 'templates')
+        toolkit.add_public_directory(config_, 'public')
+        toolkit.add_resource('fanstatic', 'landdbcustomize')
 
     # IFacet
     def dataset_facets(self, facets_dict, package_type):
@@ -109,13 +116,6 @@ class LanddbcustomizePlugin(plugins.SingletonPlugin,toolkit.DefaultDatasetForm):
                 'datasources': datasources,
                 'updatefreqs': updatefreqs,
                }
-
-    # IConfigurer
-
-    def update_config(self, config_):
-        toolkit.add_template_directory(config_, 'templates')
-        toolkit.add_public_directory(config_, 'public')
-        toolkit.add_resource('fanstatic', 'landdbcustomize')
 
     # IDatasetForm
 
