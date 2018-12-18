@@ -134,6 +134,21 @@ class LanddbcustomizePlugin(plugins.SingletonPlugin,toolkit.DefaultDatasetForm):
                 toolkit.get_validator('ignore_missing'),
                 toolkit.get_converter('convert_to_tags')('updatefreqs')
             ],
+            'start_date': [
+                toolkit.get_validator('ignore_missing'),
+                toolkit.get_validator('isodate'),
+                toolkit.get_converter('convert_to_extras')
+            ],
+            'end_date': [
+                toolkit.get_validator('ignore_missing'),
+                toolkit.get_validator('isodate'),
+                toolkit.get_converter('convert_to_extras')
+            ],
+            'last_update_date': [
+                toolkit.get_validator('ignore_missing'),
+                toolkit.get_validator('isodate'),
+                toolkit.get_converter('convert_to_extras')
+            ],
         })
 
         return schema
@@ -166,6 +181,18 @@ class LanddbcustomizePlugin(plugins.SingletonPlugin,toolkit.DefaultDatasetForm):
                 toolkit.get_validator('ignore_missing')],
             'updatefreq': [
                 toolkit.get_converter('convert_from_tags')('updatefreqs'),
+                toolkit.get_validator('ignore_missing')],
+            'start_date': [
+                toolkit.get_converter('convert_from_extras'),
+                # toolkit.get_validator('isodate'),
+                toolkit.get_validator('ignore_missing')],
+            'end_date': [
+                toolkit.get_converter('convert_from_extras'),
+                # toolkit.get_validator('isodate'),
+                toolkit.get_validator('ignore_missing')],
+            'last_update_date': [
+                toolkit.get_converter('convert_from_extras'),
+                # toolkit.get_validator('isodate'),
                 toolkit.get_validator('ignore_missing')],
             })
 
