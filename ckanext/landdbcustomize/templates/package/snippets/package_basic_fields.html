@@ -36,6 +36,6 @@
 
   {{ form.input('start_date', label=_('Start Date'), id='field-start_date', placeholder=_('eg. 2000-12-31'), value=data.start_date, error=errors.start_date, classes=['control-medium']) }}
   {{ form.input('end_date', label=_('End Date'), id='field-end_date', placeholder=_('eg. 2000-12-31'), value=data.end_date, error=errors.end_date, classes=['control-medium']) }}
-  {{ form.input('last_update_date', label=_('Last Update Date'), id='field-last_update_date', placeholder=_('last update date'), value=data.last_update_date, error=errors.last_update_date, classes=['control-medium']) }}
+  {{ form.input('last_update_date', label=_('Last Update Date'), id='field-last_update_date', placeholder=_('eg. 2000-12-31'), value=data.last_update_date, error=errors.last_update_date, classes=['control-medium']) }}
 
 {% endblock %}

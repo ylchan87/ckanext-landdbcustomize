@@ -3,7 +3,7 @@
 
 import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
-
+from ckan.lib.plugins import DefaultTranslation
 import collections
 
 # Custom vocab
@@ -76,12 +76,16 @@ def updatefreqs():
     create_vocab(vocabName, tags)
     return get_vocab(vocabName)    
 
-class LanddbcustomizePlugin(plugins.SingletonPlugin,toolkit.DefaultDatasetForm):
+class LanddbcustomizePlugin(plugins.SingletonPlugin,
+                            toolkit.DefaultDatasetForm,
+                            DefaultTranslation
+                            ):
     plugins.implements(plugins.IConfigurer)
     plugins.implements(plugins.IDatasetForm)
     plugins.implements(plugins.ITemplateHelpers)
     plugins.implements(plugins.IFacets)
     plugins.implements(plugins.IPackageController, inherit=True)
+    plugins.implements(plugins.ITranslation)
 
     # IConfigurer
 
@@ -93,9 +97,9 @@ class LanddbcustomizePlugin(plugins.SingletonPlugin,toolkit.DefaultDatasetForm):
     # IFacet
     def dataset_facets(self, facets_dict, package_type):
         new_facets_dict = collections.OrderedDict()
-        new_facets_dict['vocab_regions'] = toolkit._(u'地區')
-        new_facets_dict['vocab_datasources'] = toolkit._(u'資料來源')
-        new_facets_dict['vocab_updatefreqs'] = toolkit._(u'頻率')
+        new_facets_dict['vocab_regions'] = toolkit._(u'Region')
+        new_facets_dict['vocab_datasources'] = toolkit._(u'Data source')
+        new_facets_dict['vocab_updatefreqs'] = toolkit._(u'Update frequency')
         for k,v in facets_dict.items():
             new_facets_dict[k]=v
         return new_facets_dict
