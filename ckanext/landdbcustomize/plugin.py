@@ -74,16 +74,14 @@ def updatefreqs():
         u'不再更新', 
         ]
     create_vocab(vocabName, tags)
-    return get_vocab(vocabName)
-    
-    
-    
+    return get_vocab(vocabName)    
 
 class LanddbcustomizePlugin(plugins.SingletonPlugin,toolkit.DefaultDatasetForm):
     plugins.implements(plugins.IConfigurer)
     plugins.implements(plugins.IDatasetForm)
     plugins.implements(plugins.ITemplateHelpers)
     plugins.implements(plugins.IFacets)
+    plugins.implements(plugins.IPackageController, inherit=True)
 
     # IConfigurer
 
@@ -108,6 +106,34 @@ class LanddbcustomizePlugin(plugins.SingletonPlugin,toolkit.DefaultDatasetForm):
     def organization_facets(self,facets_dict, group_type, package_type):
         return facets_dict
     
+    # IPackageController
+    def before_search(self, search_params):
+        extras = search_params.get('extras')
+        if not extras:
+            # There are no extras in the search params, so do nothing.
+            return search_params
+
+        start_date = extras.get('ext_startdate')
+        print("sd", start_date)
+
+        end_date = extras.get('ext_enddate')
+        print("ed", end_date)
+
+        if not start_date and not end_date:
+            # The user didn't select either a start and/or end date, so do nothing.
+            return search_params
+        if not start_date:
+            start_date = '*'
+        if not end_date:
+            end_date = '*'
+
+        # Add a date-range query with the selected start and/or end dates into the Solr facet queries.
+        fq = search_params.get('fq', u'')
+        fq = u'{fq} +extras_start_date:[* TO {ed}] +extras_end_date:[{sd} TO *]'.format(fq=fq, sd=start_date, ed=end_date)
+        search_params['fq'] = fq
+
+        return search_params
+
     # ITemplateHelpers
     # inform the template of our custom vocab
     def get_helpers(self):
@@ -137,7 +163,7 @@ class LanddbcustomizePlugin(plugins.SingletonPlugin,toolkit.DefaultDatasetForm):
             'start_date': [
                 toolkit.get_validator('ignore_missing'),
                 toolkit.get_validator('isodate'),
-                toolkit.get_converter('convert_to_extras')
+                toolkit.get_converter('convert_to_extras'),
             ],
             'end_date': [
                 toolkit.get_validator('ignore_missing'),

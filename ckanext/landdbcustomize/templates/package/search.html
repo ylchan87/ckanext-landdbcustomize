@@ -1,0 +1,36 @@
+{% ckan_extends %}
+
+{% block secondary_content %}
+  {% resource 'landdbcustomize/moment.js' %}
+  {% resource 'landdbcustomize/datepicker.css' %}
+  {% resource 'landdbcustomize/bootstrap-datepicker.js' %}
+  {% resource 'landdbcustomize/daterangepicker-module.js' %}
+
+  {# This <section> is the date-range picker widget in the sidebar. #}
+  <section class="module module-narrow module-shallow">
+    <h2 class="module-heading">
+      <i class="fa fa-calendar"></i> {{ _('Publication Year') }}
+      <a href="{{ h.remove_url_param(['ext_startdate', 'ext_enddate']) }}" class="action">{{ _('Clear') }}</a>
+    </h2>
+    <form class="form-horizontal">
+    <div class="module-content input-prepend input-daterange" data-module="daterange-query" id="datepicker">
+      <div class="form-group">
+      <label class="col-sm-2 control-label" for="start">{{ _('From') }}</label>
+      <div class="col-sm-10">
+          <input type="text" class="form-control" placeholder="1950" style="background-color:#ffffff;" readonly="" name="start" id="start" data-module="daterangepicker-module" />
+      </div>
+      </div>
+      
+      <div class="form-group">
+      <label class="col-sm-2 control-label" for="end">{{ _('To') }}</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" placeholder="2050" style="background-color:#ffffff;" readonly="" name="end" id="end" data-module="daterangepicker-module" />
+      </div>
+      </div>
+    </div>
+    </form>
+    
+  </section>
+
+  {{ super() }}
+{% endblock %}
