@@ -12,24 +12,13 @@
       <i class="fa fa-calendar"></i> {{ _('Time range') }}
       <a href="{{ h.remove_url_param(['ext_startdate', 'ext_enddate']) }}" class="action">{{ _('Clear') }}</a>
     </h2>
-    <form class="form-horizontal">
     <div class="module-content input-prepend input-daterange" data-module="daterange-query" id="datepicker">
-      <div class="form-group">
-      <label class="col-sm-2 control-label" for="start">{{ _('From') }}</label>
-      <div class="col-sm-10">
-          <input type="text" class="form-control" placeholder="1950" style="background-color:#ffffff;" readonly="" name="start" id="start" data-module="daterangepicker-module" />
-      </div>
-      </div>
+      <label class="control-label" for="start">{{ _('From') }}</label>
+          <input type="text" class="form-control" placeholder="1950" style="width:175px;margin-bottom:5px;cursor:pointer;background-color:#ffffff;" readonly="" name="start" id="start" data-module="daterangepicker-module" />
       
-      <div class="form-group">
-      <label class="col-sm-2 control-label" for="end">{{ _('To') }}</label>
-      <div class="col-sm-10">
-        <input type="text" class="form-control" placeholder="2050" style="background-color:#ffffff;" readonly="" name="end" id="end" data-module="daterangepicker-module" />
-      </div>
-      </div>
+      <label class="control-label" for="end">{{ _('To') }}</label>
+        <input type="text" class="form-control" placeholder="2050" style="width:175px;cursor:pointer;background-color:#ffffff;" readonly="" name="end" id="end" data-module="daterangepicker-module" />
     </div>
-    </form>
-    
   </section>
 
   {{ super() }}
