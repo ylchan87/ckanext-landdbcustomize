@@ -1,4 +1,60 @@
 {% ckan_extends %}
+{% block package_additional_info %}
+{{ super() }}
+
+{% if pkg_dict.region %}
+<tr>
+  <th scope="row" class="dataset-label">{{ _("Region") }}</th>
+  <td class="dataset-details">
+    {% for i in pkg_dict.region %}
+    {{ i }} &nbsp
+    {% endfor%}
+  </td>
+</tr>
+{% endif %}
+
+{% if pkg_dict.datasource %}
+<tr>
+  <th scope="row" class="dataset-label">{{ _("Data source") }}</th>
+  <td class="dataset-details">{{ pkg_dict.datasource }}</td>
+</tr>
+{% endif %}
+
+{% if pkg_dict.updatefreq %}
+<tr>
+  <th scope="row" class="dataset-label">{{ _("Update frequency") }}</th>
+  <td class="dataset-details">{{ pkg_dict.updatefreq }}</td>
+</tr>
+{% endif %}
+
+{% if pkg_dict.start_date %}
+<tr>
+  <th scope="row" class="dataset-label">{{ _("Start Date") }}</th>
+  <td class="dataset-details">
+      {% snippet 'snippets/local_friendly_datetime.html', datetime_obj=pkg_dict.start_date %}
+  </td>
+</tr>
+{% endif %}
+
+{% if pkg_dict.end_date %}
+<tr>
+  <th scope="row" class="dataset-label">{{ _("End Date") }}</th>
+  <td class="dataset-details">
+      {% snippet 'snippets/local_friendly_datetime.html', datetime_obj=pkg_dict.end_date %}
+  </td>
+</tr>
+{% endif %}
+
+{% if pkg_dict.last_update_date %}
+<tr>
+  <th scope="row" class="dataset-label">{{ _("External Last Update Date") }}</th>
+  <td class="dataset-details">
+      {% snippet 'snippets/local_friendly_datetime.html', datetime_obj=pkg_dict.last_update_date %}
+  </td>
+</tr>
+{% endif %}
+
+{% endblock %}
 
 {% block extras %}
   {% if pkg_dict.custom_text %}

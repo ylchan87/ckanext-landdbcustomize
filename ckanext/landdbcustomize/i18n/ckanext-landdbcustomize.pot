@@ -1,15 +1,15 @@
 # Translations template for ckanext-landdbcustomize.
-# Copyright (C) 2018 ORGANIZATION
+# Copyright (C) 2019 ORGANIZATION
 # This file is distributed under the same license as the ckanext-landdbcustomize
 # project.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2018.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: ckanext-landdbcustomize 0.0.1\n"
+"Project-Id-Version: ckanext-landdbcustomize 0.0.2\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2018-12-19 03:49+0000\n"
+"POT-Creation-Date: 2019-01-21 13:44+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,23 +18,45 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.3.4\n"
 
-#: ckanext/landdbcustomize/plugin.py:96
+#: ckanext/landdbcustomize/plugin.py:120 ckanext/landdbcustomize/plugin.py:185
+#: ckanext/landdbcustomize/plugin.py:202
+#: ckanext/landdbcustomize/templates/package/snippets/additional_info.html:7
 #: ckanext/landdbcustomize/templates/package/snippets/package_basic_fields.html:5
 msgid "Region"
 msgstr ""
 
-#: ckanext/landdbcustomize/plugin.py:97
+#: ckanext/landdbcustomize/plugin.py:121 ckanext/landdbcustomize/plugin.py:186
+#: ckanext/landdbcustomize/plugin.py:203
+#: ckanext/landdbcustomize/templates/package/snippets/additional_info.html:18
 #: ckanext/landdbcustomize/templates/package/snippets/package_basic_fields.html:16
 msgid "Data source"
 msgstr ""
 
-#: ckanext/landdbcustomize/plugin.py:98
+#: ckanext/landdbcustomize/plugin.py:122 ckanext/landdbcustomize/plugin.py:187
+#: ckanext/landdbcustomize/plugin.py:204
+#: ckanext/landdbcustomize/templates/package/snippets/additional_info.html:25
 #: ckanext/landdbcustomize/templates/package/snippets/package_basic_fields.html:27
 msgid "Update frequency"
 msgstr ""
 
 #: ckanext/landdbcustomize/fanstatic/moment.js:6
 msgid "Weeks"
+msgstr ""
+
+#: ckanext/landdbcustomize/templates/header.html:4
+msgid "Datasets"
+msgstr ""
+
+#: ckanext/landdbcustomize/templates/header.html:5
+msgid "Organizations"
+msgstr ""
+
+#: ckanext/landdbcustomize/templates/header.html:6
+msgid "Topics"
+msgstr ""
+
+#: ckanext/landdbcustomize/templates/header.html:7
+msgid "About"
 msgstr ""
 
 #: ckanext/landdbcustomize/templates/package/search.html:12
@@ -45,30 +67,36 @@ msgstr ""
 msgid "Clear"
 msgstr ""
 
-#: ckanext/landdbcustomize/templates/package/search.html:18
+#: ckanext/landdbcustomize/templates/package/search.html:16
 msgid "From"
 msgstr ""
 
-#: ckanext/landdbcustomize/templates/package/search.html:25
+#: ckanext/landdbcustomize/templates/package/search.html:19
 msgid "To"
 msgstr ""
 
-#: ckanext/landdbcustomize/templates/package/snippets/additional_info.html:6
-msgid "Custom Text"
-msgstr ""
-
+#: ckanext/landdbcustomize/templates/package/snippets/additional_info.html:32
 #: ckanext/landdbcustomize/templates/package/snippets/package_basic_fields.html:37
 msgid "Start Date"
+msgstr ""
+
+#: ckanext/landdbcustomize/templates/package/snippets/additional_info.html:41
+#: ckanext/landdbcustomize/templates/package/snippets/package_basic_fields.html:38
+msgid "End Date"
+msgstr ""
+
+#: ckanext/landdbcustomize/templates/package/snippets/additional_info.html:50
+msgid "External Last Update Date"
+msgstr ""
+
+#: ckanext/landdbcustomize/templates/package/snippets/additional_info.html:62
+msgid "Custom Text"
 msgstr ""
 
 #: ckanext/landdbcustomize/templates/package/snippets/package_basic_fields.html:37
 #: ckanext/landdbcustomize/templates/package/snippets/package_basic_fields.html:38
 #: ckanext/landdbcustomize/templates/package/snippets/package_basic_fields.html:39
 msgid "eg. 2000-12-31"
-msgstr ""
-
-#: ckanext/landdbcustomize/templates/package/snippets/package_basic_fields.html:38
-msgid "End Date"
 msgstr ""
 
 #: ckanext/landdbcustomize/templates/package/snippets/package_basic_fields.html:39
