@@ -137,25 +137,28 @@ class LanddbcustomizePlugin(plugins.SingletonPlugin,
 
     if update_vocab:
         #translation of terms (these cannot use ITranslate) 
-        user = toolkit.get_action('get_site_user')({'ignore_auth': True}, {})
-        context = {'user': user['name']}
-        
-        term_translation_update = toolkit.get_action('term_translation_update')
-        for tagList in [regions_tags, datasources_tags, updatefreqs_tags]:
-            for tag in tagList:
-                data={
-                    'term'              : tag[0],
-                    'term_translation'  : tag[1],
-                    'lang_code'         : "zh_CN", 
-                }
-                term_translation_update(context, data)
+        try:
+            user = toolkit.get_action('get_site_user')({'ignore_auth': True}, {})
+            context = {'user': user['name']}
+            
+            term_translation_update = toolkit.get_action('term_translation_update')
+            for tagList in [regions_tags, datasources_tags, updatefreqs_tags]:
+                for tag in tagList:
+                    data={
+                        'term'              : tag[0],
+                        'term_translation'  : tag[1],
+                        'lang_code'         : "zh_CN", 
+                    }
+                    term_translation_update(context, data)
 
-                data={
-                    'term'              : tag[0],
-                    'term_translation'  : tag[2],
-                    'lang_code'         : "en", 
-                }
-                term_translation_update(context, data)
+                    data={
+                        'term'              : tag[0],
+                        'term_translation'  : tag[2],
+                        'lang_code'         : "en", 
+                    }
+                    term_translation_update(context, data)
+        except:
+            print ("Vocab not updated")
 
 
 
