@@ -36,9 +36,9 @@ regions_tags = [
         ]
 
 datasources_tags = [
-        (u'運輸及房屋局 '       , u'运输及房屋局 '           , u'Transport and Housing Bureau'),
+        (u'運輸及房屋局'       , u'运输及房屋局'           , u'Transport and Housing Bureau'),
         (u'政府統計處'          , u'政府统计处'             , u'Census and Statistics Department'), 
-        (u'房屋委員會 '         , u'房屋委员会 '            , u'Hong Kong Housing Authority'), 
+        (u'房屋委員會'         , u'房屋委员会'            , u'Hong Kong Housing Authority'), 
         (u'立法會'              , u'立法会'                , u'LegCo'), 
         (u'地政總署'             , u'地政总署'              , u'Lands Department'), 
         (u'金融管理局'           , u'金融管理局'            , u'Hong Kong Monetary Authority'), 
