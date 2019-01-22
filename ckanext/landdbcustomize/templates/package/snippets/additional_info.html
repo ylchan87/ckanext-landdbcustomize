@@ -16,14 +16,22 @@
 {% if pkg_dict.datasource %}
 <tr>
   <th scope="row" class="dataset-label">{{ _("Data source") }}</th>
-  <td class="dataset-details">{{ pkg_dict.datasource }}</td>
+  <td class="dataset-details">
+    {% for i in pkg_dict.datasource %}
+    {{ i }} &nbsp
+    {% endfor%}
+  </td>
 </tr>
 {% endif %}
 
 {% if pkg_dict.updatefreq %}
 <tr>
   <th scope="row" class="dataset-label">{{ _("Update frequency") }}</th>
-  <td class="dataset-details">{{ pkg_dict.updatefreq }}</td>
+  <td class="dataset-details">
+    {% for i in pkg_dict.updatefreq %}
+    {{ i }} &nbsp
+    {% endfor%}
+  </td>
 </tr>
 {% endif %}
 
