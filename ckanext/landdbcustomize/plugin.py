@@ -5,7 +5,7 @@ import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
 from ckan.lib.plugins import DefaultTranslation
 import collections
-
+from translate_dict import custom_tags
 # Custom vocab
 update_vocab = True
 
@@ -142,7 +142,7 @@ class LanddbcustomizePlugin(plugins.SingletonPlugin,
             context = {'user': user['name']}
             
             term_translation_update = toolkit.get_action('term_translation_update')
-            for tagList in [regions_tags, datasources_tags, updatefreqs_tags]:
+            for tagList in [regions_tags, datasources_tags, updatefreqs_tags, custom_tags]:
                 for tag in tagList:
                     data={
                         'term'              : tag[0],
@@ -253,6 +253,10 @@ class LanddbcustomizePlugin(plugins.SingletonPlugin,
     def _modify_package_schema(self, schema):
         # custom tags
         schema.update({
+            'title_en': [
+                toolkit.get_validator('ignore_missing'),
+                toolkit.get_converter('convert_to_extras'),
+            ],
             'region': [
                 toolkit.get_validator('ignore_missing'),
                 toolkit.get_converter('convert_to_tags')('regions'),
@@ -283,7 +287,6 @@ class LanddbcustomizePlugin(plugins.SingletonPlugin,
                 toolkit.get_converter('convert_to_extras')
             ],
         })
-
         return schema
 
     def create_package_schema(self):
@@ -306,6 +309,9 @@ class LanddbcustomizePlugin(plugins.SingletonPlugin,
         schema['tags']['__extras'].append(toolkit.get_converter('free_tags_only'))
         #add custom tags
         schema.update({
+            'title_en': [
+                toolkit.get_converter('convert_from_extras'),
+                toolkit.get_validator('ignore_missing')],
             'region': [
                 toolkit.get_converter('convert_from_tags')('regions'),
                 toolkit.get_validator('ignore_missing')],
