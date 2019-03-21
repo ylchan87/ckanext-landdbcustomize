@@ -121,6 +121,10 @@ def extend_facets_dict(base_facets_dict):
     new_facets_dict['vocab_datasources'] = toolkit._(u'Data source')
     new_facets_dict['vocab_updatefreqs'] = toolkit._(u'Update frequency')
     for k,v in base_facets_dict.items():
+        # print("facet dict",k,v )
+        if k=='groups': 
+            new_facets_dict[k] = toolkit._(u'Topics')
+            continue
         new_facets_dict[k]=v
     return new_facets_dict
 
@@ -190,6 +194,10 @@ class LanddbcustomizePlugin(plugins.SingletonPlugin,
         facets_dict['vocab_updatefreqs'] = toolkit._(u'Update frequency')
         
         for k,v in items:
+            # print("facet dict",k,v)
+            if k=='groups': 
+                facets_dict[k] = toolkit._(u'Topics')
+                continue
             facets_dict[k] = v
 
         return facets_dict
@@ -207,6 +215,10 @@ class LanddbcustomizePlugin(plugins.SingletonPlugin,
         facets_dict['vocab_updatefreqs'] = toolkit._(u'Update frequency')
         
         for k,v in items:
+            # print("facet dict",k,v)
+            if k=='groups': 
+                facets_dict[k] = toolkit._(u'Topics')
+                continue
             facets_dict[k] = v
 
         return facets_dict
