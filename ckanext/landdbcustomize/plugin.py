@@ -5,101 +5,11 @@ import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
 from ckan.lib.plugins import DefaultTranslation
 import collections
-from translate_dict import custom_tags
+from translate_dict import custom_tags,regions_tags,datasources_tags,updatefreqs_tags 
+
 # Custom vocab
 update_vocab = True
 
-regions_tags = [
-            (u'全港'    , u'全港'  , u'Whole HK'),
-            (u'港島'    , u'港岛'  , u'HK Island'),
-            (u'九龍'    , u'九龙'  , u'Kowloon'),
-            (u'新界'    , u'新界'  , u'NT'),
-            (u'地點'    , u'地点'  , u'Point'),
-            (u'中西區'  , u'中西区' , u'Central and Western District'),
-            (u'東區'    , u'东区'  ,u'Eastern District'),
-            (u'南區'    , u'南区'  ,u'Southern District'),
-            (u'灣仔區'  , u'湾仔区' ,u'Wan Chai District'),
-            (u'深水埗區', u'深水埗区'  ,u'Sham Shui Po District'),
-            (u'九龍城區', u'九龙城区'  ,u'Kowloon City District'),
-            (u'觀塘區'  , u'观塘区'  ,u'Kwun Tong District'),
-            (u'黃大仙區', u'黄大仙区'  ,u'Wong Tai Sin District'),
-            (u'油尖旺區', u'油尖旺区'  ,u'Yau Tsim Mong District'),
-            (u'離島區'  , u'离岛区'  ,u'Islands District'),
-            (u'葵青區'  , u'葵青区'  ,u'Kwai Tsing District'),
-            (u'北區'    , u'北区'   ,u'North District'),
-            (u'西貢區'  , u'西贡区'  ,u'Sai Kung District'),
-            (u'沙田區'  , u'沙田区'  ,u'Sha Tin District'),
-            (u'大埔區'  , u'大埔区'  ,u'Tai Po District'),
-            (u'荃灣區'  , u'荃湾区'  ,u'Tsuen Wan District'),
-            (u'屯門區'  , u'屯门区'  ,u'Tuen Mun District'),
-            (u'元朗區'  , u'元朗区'  ,u'Yuen Long District'),
-            (u'非本地'  , u'非本地'  ,u'Non local'),
-        ]
-
-datasources_tags = [
-        (u'運輸及房屋局'       , u'运输及房屋局'           , u'Transport and Housing Bureau'),
-        (u'房屋委員會'         , u'房屋委员会'            , u'Hong Kong Housing Authority'), 
-        (u'立法會'              , u'立法会'                , u'LegCo'), 
-        (u'金融管理局'           , u'金融管理局'            , u'Hong Kong Monetary Authority'), 
-        (u'一手住宅物業銷售監管局' , u'一手住宅物业销售监管局'  , u'Sales of First-hand Residential Properties Authority'), 
-        (u'人口普查'            , u'人口普查'              , u'Population census'), 
-        (u'香港政府一站通'       , u'香港政府一站通'         , u'GovHK'),  
-        (u'私人機構'            , u'私人机构'              , u'Private Agency'), 
-        (u'香港按揭證券有限公司'  , u'香港按揭证券有限公司'    , u'The Hong Kong Mortgage Corporation Limited'),
-        (u'中原地產'  , u'中原地产'    , u'Centraline Property'),
-        (u'香港房屋協會'  , u'香港房屋协会'    , u'Hong Kong Housing Society'),
-        (u'統計處'  , u'统计处'    , u'Census and Statistics Department'),
-        (u'香港中文大學'  , u'香港中文大学'    , u'The Chinese University of Hong Kong'),
-        (u'發展局', u'发展局', u'Development Bureau'), 
-        (u'環境局', u'环境局', u'Environment Bureau'), 
-        (u'財經事務及庫務局', u'财经事务及库务局', u'Financial Services and the Treasury Bureau'), 
-        (u'創新及科技局', u'创新及科技局', u'Innovation and Technology Bureau'), 
-        (u'勞工及福利局', u'劳工及福利局', u'Labour and Welfare Bureau'), 
-        (u'運輸及房屋局', u'运输及房屋局', u'Transport and Housing Bureau'), 
-        (u'建築署', u'建筑署', u'Architectural Services Department'), 
-        (u'屋宇署', u'屋宇署', u'Buildings Department'), 
-        (u'政府統計處', u'政府统计处', u'Census and Statistics Department'), 
-        (u'土木工程拓展署', u'土木工程拓展署', u'Civil Engineering and Development Department'), 
-        (u'公司註冊處', u'公司注册处', u'Companies Registry'), 
-        (u'機電工程署', u'机电工程署', u'Electrical and Mechanical Services Department'), 
-        (u'環境保護署', u'环境保护署', u'Environmental Protection Department'), 
-        (u'食物環境衞生署', u'食物环境衞生署', u'Food and Environmental Hygiene Department'), 
-        (u'政府產業署', u'政府产业署', u'Government Property Agency'), 
-        (u'衞生署', u'衞生署', u'"Health'), 
-        (u'房屋署', u'房屋署', u'Housing Department'), 
-        (u'政府新聞處', u'政府新闻处', u'Information Services Department'), 
-        (u'稅務局', u'税务局', u'Inland Revenue Department'), 
-        (u'勞工處', u'劳工处', u'Labour Department'), 
-        (u'土地註冊處', u'土地注册处', u'Land Registry'), 
-        (u'地政總署', u'地政总署', u'Lands Department'), 
-        (u'康樂及文化事務署', u'康乐及文化事务署', u'Leisure and Cultural Services Department'), 
-        (u'規劃署', u'规划署', u'Planning Department'), 
-        (u'香港電台', u'香港电台', u'Radio Television Hong Kong'), 
-        (u'差餉物業估價署', u'差饷物业估价署', u'Rating and Valuation Department'), 
-        (u'社會福利署', u'社会福利署', u'Social Welfare Department'), 
-        (u'運輸署', u'运输署', u'Transport Department'), 
-        (u'庫務署', u'库务署', u'Treasury'), 
-        (u'競爭事務委員會', u'竞争事务委员会', u'Competition Commission'), 
-        (u'消費者委員會', u'消费者委员会', u'Consumer Council'), 
-        (u'地產代理監管局', u'地产代理监管局', u'Estate Agents Authority'), 
-        (u'醫院管理局', u'医院管理局', u'Hospital Authority'), 
-        (u'強制性公積金計劃管理局', u'强制性公积金计划管理局', u'Mandatory Provident Fund Schemes Authority'),
-        (u'領匯.領展', u'领汇.领展', u'Link REIT'), 
-        (u'領匯監察', u'领汇监察', u'Link Watch'), 
-        (u'其他', u'其他', u'Others'), 
-        ]
-
-updatefreqs_tags = [
-        (u'5年'    , u'5年'      ,u'5-Yearly'),
-        (u'每年'    , u'每年'     ,u'Yearly'), 
-        (u'每半年'  , u'每半年'    ,u'Half-Yearly'),  
-        (u'每月'    , u'每月'     ,u'Monthly'),
-        (u'每季'    , u'每季'     ,u'Quarterly'),
-        (u'每週'    , u'每週'     ,u'Weekly'),
-        (u'不定期'  , u'不定期'    ,u'Irregular'),
-        (u'一次性'   , u'一次性'   ,u'One-shot'), 
-        (u'不再更新' , u'不再更新'  ,u'No longer updated'), 
-        ]
 
 def create_vocab(vocabName, tags):
     user = toolkit.get_action('get_site_user')({'ignore_auth': True}, {})
