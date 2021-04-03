@@ -52,7 +52,7 @@ msgstr "資料集"
 
 #: ckanext/landdbcustomize/templates/header.html:5
 msgid "Organizations"
-msgstr "組織"
+msgstr "上載者"
 
 #: ckanext/landdbcustomize/templates/header.html:6
 msgid "Topics"

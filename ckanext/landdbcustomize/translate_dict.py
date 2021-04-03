@@ -101,6 +101,11 @@ datasources_tags = [
 	(u'樂施會',u'乐施会',u'Oxfam Hong Kong',),
 	(u'香港年金有限公司',u'香港年金有限公司',u'HKMC Annuity Limited',),
 	(u'香港特別行政區政府新聞公報',u'香港特别行政区政府新闻公报',u'HKSAR Government Press Release',),
+        (u'公民團體', u'公民团体', u'Civil Activist Groups'), 
+        (u'非政府組織', u'非政府组织', u'NGOs'), 
+	(u'香港浸會大學',u'香港浸会大学',u'Hong Kong Baptist University',),
+        (u'香港理工大學', u'香港理工大学', u'The Hong Kong Polytechnic University'), 
+        (u'衞生署', u'卫生署', u'Department of Health'), 
         (u'其他', u'其他', u'Others'), 
         ]
 

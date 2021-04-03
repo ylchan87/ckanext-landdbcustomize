@@ -39,6 +39,10 @@ msgstr "Update frequency"
 msgid "Weeks"
 msgstr "Weeks"
 
+#: ckanext/landdbcustomize/templates/header.html:5
+msgid "Organizations"
+msgstr "Uploader"
+
 #: ckanext/landdbcustomize/templates/package/search.html:12
 msgid "Time range"
 msgstr "Time range"
