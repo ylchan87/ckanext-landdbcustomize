@@ -5,7 +5,7 @@ import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
 from ckan.lib.plugins import DefaultTranslation
 import collections
-from translate_dict import custom_tags,regions_tags,datasources_tags,updatefreqs_tags 
+from .translate_dict import custom_tags,regions_tags,datasources_tags,updatefreqs_tags 
 
 # Custom vocab
 update_vocab = True
