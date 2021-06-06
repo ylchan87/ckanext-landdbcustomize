@@ -124,7 +124,9 @@ class LanddbcustomizePlugin(plugins.SingletonPlugin,
     def update_config(self, config_):
         toolkit.add_template_directory(config_, 'templates')
         toolkit.add_public_directory(config_, 'public')
-        toolkit.add_resource('fanstatic', 'landdbcustomize')
+        #toolkit.add_resource('fanstatic', 'landdbcustomize')
+        toolkit.add_resource('assets', 'landdbcustomize')
+
 
     # IFacet
     def dataset_facets(self, facets_dict, package_type):

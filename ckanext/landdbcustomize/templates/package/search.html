@@ -1,10 +1,8 @@
 {% ckan_extends %}
 
 {% block secondary_content %}
-  {% resource 'landdbcustomize/moment.js' %}
-  {% resource 'landdbcustomize/datepicker.css' %}
-  {% resource 'landdbcustomize/bootstrap-datepicker.js' %}
-  {% resource 'landdbcustomize/daterangepicker-module.js' %}
+  {% asset 'landdbcustomize/datepicker-js' %}
+  {% asset 'landdbcustomize/datepicker-css' %}
 
   {# This <section> is the date-range picker widget in the sidebar. #}
   <section class="module module-narrow module-shallow">

@@ -1,0 +1,12 @@
+datepicker-css:
+  contents:
+    - datepicker.css
+
+datepicker-js:
+  extra:
+    preload:
+      - base/main
+  contents:
+    - moment.js
+    - daterangepicker-module.js
+    - bootstrap-datepicker.js
