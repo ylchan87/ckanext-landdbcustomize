@@ -4,6 +4,8 @@
 import ckan.plugins as plugins
 import ckan.plugins.toolkit as toolkit
 from ckan.lib.plugins import DefaultTranslation
+from ckan.common import request, config, c
+
 import collections
 from .translate_dict import custom_tags,regions_tags,datasources_tags,updatefreqs_tags 
 
@@ -100,8 +102,15 @@ class LanddbcustomizePlugin(plugins.SingletonPlugin,
                 for tag in tagList:
                     data={
                         'term'              : tag[0],
+                        'term_translation'  : tag[0],
+                        'lang_code'         : "zh_Hant_TW", 
+                    }
+                    term_translation_update(context, data)
+
+                    data={
+                        'term'              : tag[0],
                         'term_translation'  : tag[1],
-                        'lang_code'         : "zh_CN", 
+                        'lang_code'         : "zh_Hans_CN", 
                     }
                     term_translation_update(context, data)
 
@@ -301,6 +310,16 @@ class LanddbcustomizePlugin(plugins.SingletonPlugin,
 
         return schema
     
+    def before_view(self, dataset_dict):
+
+        desired_lang_code = request.environ['CKAN_LANG']
+        fallback_lang_code = config.get('ckan.locale_default', 'en')
+
+        translated_title = dataset_dict.get("title_" + desired_lang_code, None)
+        if translated_title:
+            dataset_dict["title"] = translated_title
+
+        return dataset_dict
 
 
 
