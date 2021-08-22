@@ -121,6 +121,15 @@ updatefreqs_tags = [
         (u'不再更新' , u'不再更新'  ,u'No longer updated'), 
         ]
 
+datacategories_tags = [
+        (u'立法會文件'          , u'立法会文件'          , u'Legco docs'),
+        (u'官方文件'            , u'官方文件'           , u'Government docs'),
+        (u'區議會文件'          , u'区议会文件'          , u'District council docs'),
+        (u'民間報告'            , u'民间报告'           , u'Civilian report'),
+        (u'官方委託研究文件'    , u'官方委托研究文件'  , u'Gov commissioned research documents'),
+        (u'官民信件'            , u'官民信件'           , u'Gov Civilian letters'),
+        ]
+
 custom_tags = [
 (u'公屋',u'公屋',u'Public housing',),
 (u'住戶數目',u'住户数目',u'Number of households',),

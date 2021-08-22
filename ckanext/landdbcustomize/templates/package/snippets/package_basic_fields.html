@@ -28,6 +28,18 @@
   </div>
 
   <div class="form-group">
+    <label class="control-label" for="field-datacategory">{{ _("Data category") }}</label>
+    <div class="controls control-full control-medium">
+      <select multiple id="field-datacategory" name="datacategory" data-module="autocomplete">
+        {% for datacategory in h.datacategories()  %}
+          <option value="{{ datacategory }}" {% if datacategory in data.get('datacategory', []) %}selected="selected"{% endif %}>{{ datacategory }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    &nbsp;
+  </div>
+
+  <div class="form-group">
     <label class="control-label" for="field-updatefreq">{{ _("Update frequency") }}</label>
     <div class="controls control-full control-medium">
       <select multiple id="field-updatefreq" name="updatefreq" data-module="autocomplete">

@@ -12,14 +12,13 @@ msgstr ""
 "POT-Creation-Date: 2019-01-21 13:44+0000\n"
 "PO-Revision-Date: 2019-01-21 21:58+0800\n"
 "Last-Translator: \n"
-"Language-Team: zh_Hans_CN <LL@li.org>\n"
 "Language: zh_CN\n"
+"Language-Team: zh_Hans_CN <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
-"Generated-By: Babel 2.3.4\n"
-"X-Generator: Poedit 2.2\n"
+"Generated-By: Babel 2.7.0\n"
 
 #: ckanext/landdbcustomize/plugin.py:120 ckanext/landdbcustomize/plugin.py:185
 #: ckanext/landdbcustomize/plugin.py:202
@@ -34,6 +33,11 @@ msgstr "地区"
 #: ckanext/landdbcustomize/templates/package/snippets/package_basic_fields.html:16
 msgid "Data source"
 msgstr "资料来源"
+
+#: ckanext/landdbcustomize/plugin.py:162 ckanext/landdbcustomize/plugin.py:184
+#: ckanext/landdbcustomize/templates/package/snippets/package_basic_fields.html:31
+msgid "Data category"
+msgstr "资料类别"
 
 #: ckanext/landdbcustomize/plugin.py:122 ckanext/landdbcustomize/plugin.py:187
 #: ckanext/landdbcustomize/plugin.py:204
@@ -105,3 +109,4 @@ msgstr "例如. 2000-12-31"
 #: ckanext/landdbcustomize/templates/package/snippets/package_basic_fields.html:39
 msgid "Last Update Date"
 msgstr "最后更新日期"
+

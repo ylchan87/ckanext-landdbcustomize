@@ -7,7 +7,7 @@ from ckan.lib.plugins import DefaultTranslation
 from ckan.common import request, config, c
 
 import collections
-from .translate_dict import custom_tags,regions_tags,datasources_tags,updatefreqs_tags 
+from .translate_dict import custom_tags,regions_tags,datasources_tags,updatefreqs_tags,datacategories_tags
 
 # Custom vocab
 update_vocab = True
@@ -67,11 +67,17 @@ def updatefreqs():
     if update_vocab: create_vocab('updatefreqs', [ t[0] for t in updatefreqs_tags])
     return get_vocab('updatefreqs')    
 
+def datacategories():
+    if update_vocab: create_vocab('datacategories', [ t[0] for t in datacategories_tags])
+    return get_vocab('datacategories')
+
+
 def extend_facets_dict(base_facets_dict):
     new_facets_dict = collections.OrderedDict()
     new_facets_dict['vocab_regions'] = toolkit._(u'Region')
     new_facets_dict['vocab_datasources'] = toolkit._(u'Data source')
     new_facets_dict['vocab_updatefreqs'] = toolkit._(u'Update frequency')
+    new_facets_dict['vocab_datacategories'] = toolkit._(u'Data category')
     for k,v in base_facets_dict.items():
         # print("facet dict",k,v )
         if k=='groups': 
@@ -98,7 +104,7 @@ class LanddbcustomizePlugin(plugins.SingletonPlugin,
             context = {'user': user['name']}
             
             term_translation_update = toolkit.get_action('term_translation_update')
-            for tagList in [regions_tags, datasources_tags, updatefreqs_tags, custom_tags]:
+            for tagList in [regions_tags, datasources_tags, updatefreqs_tags, custom_tags, datacategories_tags]:
                 for tag in tagList:
                     data={
                         'term'              : tag[0],
@@ -153,6 +159,7 @@ class LanddbcustomizePlugin(plugins.SingletonPlugin,
         facets_dict['vocab_regions'] = toolkit._(u'Region')
         facets_dict['vocab_datasources'] = toolkit._(u'Data source')
         facets_dict['vocab_updatefreqs'] = toolkit._(u'Update frequency')
+        facets_dict['vocab_datacategories'] = toolkit._(u'Data category')
         
         for k,v in items:
             # print("facet dict",k,v)
@@ -174,6 +181,7 @@ class LanddbcustomizePlugin(plugins.SingletonPlugin,
         facets_dict['vocab_regions'] = toolkit._(u'Region')
         facets_dict['vocab_datasources'] = toolkit._(u'Data source')
         facets_dict['vocab_updatefreqs'] = toolkit._(u'Update frequency')
+        facets_dict['vocab_datacategories'] = toolkit._(u'Data category')
         
         for k,v in items:
             # print("facet dict",k,v)
@@ -219,6 +227,7 @@ class LanddbcustomizePlugin(plugins.SingletonPlugin,
                 'regions': regions,
                 'datasources': datasources,
                 'updatefreqs': updatefreqs,
+                'datacategories': datacategories,
                }
 
     # IDatasetForm
@@ -259,6 +268,10 @@ class LanddbcustomizePlugin(plugins.SingletonPlugin,
                 toolkit.get_validator('isodate'),
                 toolkit.get_converter('convert_to_extras')
             ],
+            'datacategory': [
+                toolkit.get_validator('ignore_missing'),
+                toolkit.get_converter('convert_to_tags')('datacategories')
+            ],
         })
         return schema
 
@@ -289,7 +302,6 @@ class LanddbcustomizePlugin(plugins.SingletonPlugin,
                 toolkit.get_converter('convert_from_tags')('regions'),
                 toolkit.get_validator('ignore_missing')],
             'datasource': [
-                toolkit.get_converter('convert_from_tags')('datasources'),
                 toolkit.get_validator('ignore_missing')],
             'updatefreq': [
                 toolkit.get_converter('convert_from_tags')('updatefreqs'),
@@ -306,6 +318,10 @@ class LanddbcustomizePlugin(plugins.SingletonPlugin,
                 toolkit.get_converter('convert_from_extras'),
                 # toolkit.get_validator('isodate'),
                 toolkit.get_validator('ignore_missing')],
+            'datacategory': [
+                toolkit.get_converter('convert_from_tags')('datacategories'),
+                toolkit.get_validator('ignore_missing'),
+            ],
             })
 
         return schema
