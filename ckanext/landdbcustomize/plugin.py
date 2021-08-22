@@ -16,6 +16,8 @@ update_vocab = True
 def create_vocab(vocabName, tags):
     user = toolkit.get_action('get_site_user')({'ignore_auth': True}, {})
     context = {'user': user['name']}
+    context = {'user': "admin"}  #FIXME: hardcode "admin"
+
     try:
         data = {'id': vocabName}
         toolkit.get_action('vocabulary_show')(context, data)
