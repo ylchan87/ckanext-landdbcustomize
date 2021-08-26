@@ -111,6 +111,7 @@ datasources_tags = [
         ]
 
 updatefreqs_tags = [
+        (u'兩年'    , u'兩年'      ,u'Bi-Yearly'),
         (u'5年'    , u'5年'      ,u'5-Yearly'),
         (u'每年'    , u'每年'     ,u'Yearly'), 
         (u'每半年'  , u'每半年'    ,u'Half-Yearly'),  
