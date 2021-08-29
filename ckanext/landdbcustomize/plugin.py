@@ -304,6 +304,7 @@ class LanddbcustomizePlugin(plugins.SingletonPlugin,
                 toolkit.get_converter('convert_from_tags')('regions'),
                 toolkit.get_validator('ignore_missing')],
             'datasource': [
+                toolkit.get_converter('convert_from_tags')('datasources'),
                 toolkit.get_validator('ignore_missing')],
             'updatefreq': [
                 toolkit.get_converter('convert_from_tags')('updatefreqs'),
