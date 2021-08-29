@@ -1,10 +1,15 @@
 from ckanapi import RemoteCKAN
-ua = 'ckanapiexample/1.0 (+http://example.com/my/website)'
+from pprint import pprint
 
-session = RemoteCKAN('https://db.cschk.org', apikey='???', user_agent=ua)
+with open("apikey.txt", "r") as f:
+    site = f.readline().strip()
+    secret = f.readline()
+
+ua = 'ckanapiexample/1.0 (+http://example.com/my/website)'
+session = RemoteCKAN(site, apikey=secret, user_agent=ua)
 
 # search datasets 
-packages = session.action.package_search(include_private=True, q='運作 organization=autobot')
+packages = session.action.package_search(include_private=True, q='運作 organization=hpg')
 print(packages['count'])
 p = packages['results'][0]
 
@@ -30,7 +35,3 @@ session.action.resource_create(**local_resource)
 
 # list policy categories
 gps = session.action.group_list()
-
-
-# change "uploader"
-tmp = session.action.package_patch(id=pid, owner_org="students")
