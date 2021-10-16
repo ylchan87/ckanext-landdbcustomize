@@ -107,6 +107,8 @@ datasources_tags = [
         (u'香港理工大學', u'香港理工大学', u'The Hong Kong Polytechnic University'), 
         (u'衞生署', u'卫生署', u'Department of Health'), 
         (u'安老事務委員會', u'安老事务委员会', u'Elderly Commission'), 
+        (u'區議會', u'区议会', u'District Council'),
+        (u'律政司', u'律政司', u'Dept of Justice'),
         (u'其他', u'其他', u'Others'), 
         ]
 
