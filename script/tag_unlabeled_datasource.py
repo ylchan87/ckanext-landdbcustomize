@@ -1,7 +1,8 @@
 from ckanapi import RemoteCKAN
 from pprint import pprint
+from datetime import datetime
 
-secret = open("apikey.txt", "r").readline()
+secret = open("apikey.txt", "r").readline().strip()
 
 ua = 'ckanapiexample/1.0 (+http://example.com/my/website)'
 session = RemoteCKAN('https://data.hkppdb.org', apikey=secret, user_agent=ua)
@@ -9,6 +10,7 @@ session = RemoteCKAN('https://data.hkppdb.org', apikey=secret, user_agent=ua)
 packages = []
 batch_size = 1000
 
+print(f"{datetime.now()} Look for untagged dataset")
 # get all dataset
 while True:
     reply = session.action.package_search(include_private=True, rows=1000, start=len(packages))
@@ -40,3 +42,4 @@ for p in packages:
             pid = p["id"]
             session.action.package_patch(id=pid, tags=package_tags)
         
+print(f"{datetime.now()} Done")
