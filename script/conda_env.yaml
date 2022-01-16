@@ -1,0 +1,6 @@
+name: ckan
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - ckanapi
